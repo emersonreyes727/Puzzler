@@ -9,9 +9,9 @@ public class lightUp : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		defaultMaterial = this.GetComponent<MeshRenderer> ().material; //Save our initial material as the default
-		//this.GetComponentInChildren<ParticleSystem>().enableEmission = false; //Start without emitting particles
+		this.GetComponentInChildren<ParticleSystem>().enableEmission = false; //Start without emitting particles
 
-		gameLogic = GameObject.Find ("GameLogic");
+		// gameLogic = GameObject.Find ("GameLogic"); // THIS WAS NOT NECESSARY!!!
 	}
 	
 	// Update is called once per frame
@@ -28,22 +28,22 @@ public class lightUp : MonoBehaviour {
 		this.GetComponentInChildren<ParticleSystem>().enableEmission = true; //Turn on particle emmission
 		this.GetComponent<GvrAudioSource>().Play();
 
-		//gameLogic.GetComponent<GameLogic>().playerSelection(this.gameObject);
+		//gameLogic.GetComponent<GameLogic>().playerSelection(this.gameObject); // THIS WAS NOT NECESSARY!!!
 
 
 	}
 	public void playerSelection() {
 		gameLogic.GetComponent<GameLogic>().playerSelection(this.gameObject);
-		this.GetComponent<GvrAudioSource>().Play();
+		// this.GetComponent<GvrAudioSource>().Play(); // too much audio
 	}
 	public void aestheticReset() {
 		this.GetComponent<MeshRenderer>().material = defaultMaterial; //Revert to the default material
-		//this.GetComponentInChildren<ParticleSystem>().enableEmission = false; //Turn off particle emission
+		this.GetComponentInChildren<ParticleSystem>().enableEmission = false; //Turn off particle emission
 	}
 
 	public void patternLightUp() { //Lightup behavior when the pattern shows.
 		this.GetComponent<MeshRenderer>().material = lightUpMaterial; //Assign the hover material
-		//this.GetComponentInChildren<ParticleSystem>().enableEmission = true; //Turn on particle emmission
+		this.GetComponentInChildren<ParticleSystem>().enableEmission = true; //Turn on particle emmission
 		this.GetComponent<GvrAudioSource> ().Play (); //Play the audio attached
 	}
 
