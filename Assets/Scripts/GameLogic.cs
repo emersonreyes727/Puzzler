@@ -19,6 +19,7 @@ public class GameLogic : MonoBehaviour {
 
     private int currentSolveIndex = 0; //Temporary variable for storing the index that the player is solving for in the pattern.
 
+    public GameObject failAudioHolder;
 
     // Use this for initialization
     void Start () {
@@ -124,7 +125,7 @@ public class GameLogic : MonoBehaviour {
 
     public void puzzleFailure() { //Do this when the player gets it wrong
         Debug.Log("You've Failed, Resetting puzzle");
-
+        failAudioHolder.GetComponent<GvrAudioSource>().Play();
         currentSolveIndex = 0;
 
         startPuzzle ();
